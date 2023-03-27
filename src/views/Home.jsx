@@ -7,7 +7,7 @@ import iconSecurity from "../assets/icons/icon-security.png";
 
 function Home() {
   return (
-    <main>
+    <main className='main'>
       <div className='hero' style={{ backgroundImage: `url(${heroBg})` }}>
         <section className='hero-content'>
           <h2 className='sr-only'>Promoted Content</h2>
