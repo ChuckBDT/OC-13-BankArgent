@@ -7,7 +7,7 @@ import iconSecurity from "../assets/icons/icon-security.png";
 
 function Home() {
   return (
-    <>
+    <main>
       <div className='hero' style={{ backgroundImage: `url(${heroBg})` }}>
         <section className='hero-content'>
           <h2 className='sr-only'>Promoted Content</h2>
@@ -28,7 +28,7 @@ function Home() {
           </p>
         </div>
         <div className='feature-item'>
-          <img src={iconMoney} alt='Chat Icon' className='feature-icon' />
+          <img src={iconMoney} alt='Money Icon' className='feature-icon' />
           <h3 className='feature-item-title'>
             More savings means higher rates
           </h3>
@@ -37,7 +37,11 @@ function Home() {
           </p>
         </div>
         <div className='feature-item'>
-          <img src={iconSecurity} alt='Chat Icon' className='feature-icon' />
+          <img
+            src={iconSecurity}
+            alt='Security Icon'
+            className='feature-icon'
+          />
           <h3 className='feature-item-title'>Security you can trust</h3>
           <p>
             We use top of the line encryption to make sure your data and money
@@ -45,7 +49,7 @@ function Home() {
           </p>
         </div>
       </section>
-    </>
+    </main>
   );
 }
 
