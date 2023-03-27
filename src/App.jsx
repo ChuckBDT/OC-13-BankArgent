@@ -1,11 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
-import Logo from "./assets/argentBankLogo.png";
+import { useDispatch, useSelector } from "react-redux";
 
+import Logo from "./assets/argentBankLogo.png";
 import "./App.css";
 
 // Add conditions about sign in / out
 
 function App() {
+  const isConnected = useSelector((state) => state.auth.userInfo);
   return (
     <>
       <header className='App-header'>
@@ -19,10 +21,23 @@ function App() {
             <h1 className='sr-only'>Argent Bank</h1>
           </Link>
           <div>
-            <Link className='main-nav-item' to={"/login"}>
-              <i className='fa fa-user-circle'></i>
-              Sign In
-            </Link>
+            {isConnected ? (
+              <>
+                <Link className='main-nav-item' to={"/user/fakeID"}>
+                  <i className='fa fa-user-circle'></i>
+                  Name
+                </Link>
+                <Link className='main-nav-item' to={"/"}>
+                  <i className='fa fa-sign-out'></i>
+                  Sign Out
+                </Link>
+              </>
+            ) : (
+              <Link className='main-nav-item' to={"/login"}>
+                <i className='fa fa-user-circle'></i>
+                Sign In
+              </Link>
+            )}
           </div>
         </nav>
       </header>
