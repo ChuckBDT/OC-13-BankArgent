@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./features/auth/authSlice";
@@ -6,7 +7,7 @@ import Logo from "./assets/argentBankLogo.png";
 import "./App.css";
 
 function App() {
-  const isConnected = useSelector((state) => state.auth.userInfo);
+  const isConnected = useSelector((state) => state.auth.details);
   const dispatch = useDispatch();
 
   return (
@@ -24,7 +25,7 @@ function App() {
           <div>
             {isConnected ? (
               <>
-                <Link className='main-nav-item' to={"/user/fakeID"}>
+                <Link className='main-nav-item' to={"/user/profile"}>
                   <i className='fa fa-user-circle icon-margin-right'></i>
                   Name
                 </Link>
