@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetUserDetailsQuery } from "../features/apiSlice";
+import { setUserInfos } from "../features/auth/authSlice";
 
-function User() {
+const User = () => {
+  const userInfos = useSelector((state) => state.auth.userInfos.body);
+
+  const dispatch = useDispatch();
   const { data } = useGetUserDetailsQuery();
-  console.log(data);
+
+  useEffect(() => {
+    if (data) dispatch(setUserInfos(data));
+  }, [data, dispatch]);
 
   return (
     <main className='main bg-dark'>
@@ -11,7 +19,8 @@ function User() {
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {userInfos.firstName ? userInfos.firstName : "Chargement"}{" "}
+          {userInfos.lastName ? userInfos.lastName : ""} !
         </h1>
         <button className='edit-button'>Edit Name</button>
       </div>
@@ -48,6 +57,6 @@ function User() {
       </section>
     </main>
   );
-}
+};
 
 export default User;

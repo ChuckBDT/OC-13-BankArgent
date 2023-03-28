@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./features/auth/authSlice";
@@ -8,6 +7,7 @@ import "./App.css";
 
 function App() {
   const isConnected = useSelector((state) => state.auth.details);
+  const userName = useSelector((state) => state.auth.userInfos.body);
   const dispatch = useDispatch();
 
   return (
@@ -27,7 +27,8 @@ function App() {
               <>
                 <Link className='main-nav-item' to={"/user/profile"}>
                   <i className='fa fa-user-circle icon-margin-right'></i>
-                  Name
+                  {userName.firstName ? userName.firstName : "Chargement"}{" "}
+                  {userName.lastName ? userName.lastName : ""}
                 </Link>
                 <Link
                   className='main-nav-item'
