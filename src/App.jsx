@@ -25,7 +25,7 @@ function App() {
             {isConnected ? (
               <>
                 <Link className='main-nav-item' to={"/user/fakeID"}>
-                  <i className='fa fa-user-circle'></i>
+                  <i className='fa fa-user-circle icon-margin-right'></i>
                   Name
                 </Link>
                 <Link
@@ -33,13 +33,13 @@ function App() {
                   onClick={() => dispatch(logout())}
                   to={"/"}
                 >
-                  <i className='fa fa-sign-out'></i>
+                  <i className='fa fa-sign-out icon-margin-right'></i>
                   Sign Out
                 </Link>
               </>
             ) : (
               <Link className='main-nav-item' to={"/login"}>
-                <i className='fa fa-user-circle'></i>
+                <i className='fa fa-user-circle icon-margin-right'></i>
                 Sign In
               </Link>
             )}

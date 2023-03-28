@@ -74,6 +74,10 @@ body {
   width: 200px;
 }
 
+.icon-margin-right {
+  margin-right: 4px;
+}
+
 .hero {
   background-position: 0 -50px;
   background-size: cover;
