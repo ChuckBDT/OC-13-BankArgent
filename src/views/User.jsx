@@ -1,6 +1,10 @@
 import React from "react";
+import { useGetUserDetailsQuery } from "../features/apiSlice";
 
 function User() {
+  const { data } = useGetUserDetailsQuery();
+  console.log(data);
+
   return (
     <main className='main bg-dark'>
       <div className='header'>
