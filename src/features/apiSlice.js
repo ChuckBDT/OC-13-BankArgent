@@ -19,7 +19,15 @@ export const profileApi = createApi({
         method: "POST",
       }),
     }),
+    updateUserDetails: builder.mutation({
+      query: ({ ...rest }) => ({
+        url: "user/profile",
+        method: "PUT",
+        body: rest,
+      }),
+    }),
   }),
 });
 
-export const { useGetUserDetailsQuery } = profileApi;
+export const { useGetUserDetailsQuery, useUpdateUserDetailsMutation } =
+  profileApi;

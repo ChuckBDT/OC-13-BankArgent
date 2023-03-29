@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetUserDetailsQuery } from "../features/apiSlice";
+import {
+  useGetUserDetailsQuery,
+  useUpdateUserDetailsMutation,
+} from "../features/apiSlice";
 import { setUserInfos } from "../features/auth/authSlice";
 
 const User = () => {
   const { userInfos } = useSelector((state) => state.auth);
   const { data } = useGetUserDetailsQuery();
+  const [updateUserDetails] = useUpdateUserDetailsMutation();
   const dispatch = useDispatch();
+
+  const updateUserHandler = () => {
+    updateUserDetails({
+      firstName: "Test",
+      lastName: "Test",
+    });
+  };
 
   useEffect(() => {
     if (data) dispatch(setUserInfos(data));
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <main className='main bg-dark'>
@@ -21,7 +32,9 @@ const User = () => {
           {userInfos ? userInfos.body.firstName : "Chargement"}{" "}
           {userInfos ? userInfos.body.lastName : ""} !
         </h1>
-        <button className='edit-button'>Edit Name</button>
+        <button className='edit-button' onClick={() => updateUserHandler()}>
+          Edit Name
+        </button>
       </div>
       <h2 className='sr-only'>Accounts</h2>
       <section className='account'>

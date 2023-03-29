@@ -13,10 +13,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout: () => {
-      localStorage.clear();
-      return initialState;
-    },
+    logout: () => initialState,
     setUserInfos: (state, { payload }) => {
       state.userInfos = payload;
     },

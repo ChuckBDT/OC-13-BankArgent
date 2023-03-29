@@ -11,7 +11,6 @@ import Login from "./views/Login";
 import User from "./views/User";
 
 import "./index.css";
-import { profileApi } from "./features/apiSlice";
 
 const router = createBrowserRouter([
   {
