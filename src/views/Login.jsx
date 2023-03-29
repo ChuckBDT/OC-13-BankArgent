@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function Login() {
-  const { details } = useSelector((state) => state.auth);
+  const { logDetails } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -15,10 +15,10 @@ function Login() {
   };
 
   useEffect(() => {
-    if (details) {
+    if (logDetails) {
       navigate("/user/profile");
     }
-  }, [details]);
+  }, [logDetails]);
 
   return (
     <main className='main bg-dark'>

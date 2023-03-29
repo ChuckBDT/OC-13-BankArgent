@@ -4,14 +4,13 @@ import { useGetUserDetailsQuery } from "../features/apiSlice";
 import { setUserInfos } from "../features/auth/authSlice";
 
 const User = () => {
-  const userInfos = useSelector((state) => state.auth.userInfos.body);
-
-  const dispatch = useDispatch();
+  const { userInfos } = useSelector((state) => state.auth);
   const { data } = useGetUserDetailsQuery();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data) dispatch(setUserInfos(data));
-  }, [data, dispatch]);
+  }, [data]);
 
   return (
     <main className='main bg-dark'>
@@ -19,8 +18,8 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          {userInfos.firstName ? userInfos.firstName : "Chargement"}{" "}
-          {userInfos.lastName ? userInfos.lastName : ""} !
+          {userInfos ? userInfos.body.firstName : "Chargement"}{" "}
+          {userInfos ? userInfos.body.lastName : ""} !
         </h1>
         <button className='edit-button'>Edit Name</button>
       </div>

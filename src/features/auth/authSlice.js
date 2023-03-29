@@ -1,22 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userLogin } from "./authActions";
 
-const userToken = localStorage.getItem("userToken")
-  ? localStorage.getItem("userToken")
-  : null;
-
 const initialState = {
   loading: false,
-  details: null,
-  userInfos: {
-    status: 0,
-    message: null,
-    body: {
-      id: null,
-      email: null,
-    },
-  },
-  userToken,
+  logDetails: null,
+  userInfos: null,
   error: null,
   success: false,
 };
@@ -40,8 +28,7 @@ const authSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.details = payload;
-      state.userToken = payload.userToken;
+      state.logDetails = payload;
       state.success = true;
     },
     [userLogin.rejected]: (state, { payload }) => {

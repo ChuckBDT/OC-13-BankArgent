@@ -1,14 +1,14 @@
+import React from "react";
 import { Outlet, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { logout } from "./features/auth/authSlice";
 
 import Logo from "./assets/argentBankLogo.png";
 import "./App.css";
 
 function App() {
-  const isConnected = useSelector((state) => state.auth.details);
-  const userName = useSelector((state) => state.auth.userInfos.body);
-  const dispatch = useDispatch();
+  const { logDetails } = useSelector((state) => state.auth);
+  const { userInfos } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -23,12 +23,12 @@ function App() {
             <h1 className='sr-only'>Argent Bank</h1>
           </Link>
           <div>
-            {isConnected ? (
+            {logDetails ? (
               <>
                 <Link className='main-nav-item' to={"/user/profile"}>
                   <i className='fa fa-user-circle icon-margin-right'></i>
-                  {userName.firstName ? userName.firstName : "Chargement"}{" "}
-                  {userName.lastName ? userName.lastName : ""}
+                  {userInfos ? userInfos.body.firstName : "Chargement"}{" "}
+                  {userInfos ? userInfos.body.lastName : ""}
                 </Link>
                 <Link
                   className='main-nav-item'

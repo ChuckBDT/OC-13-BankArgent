@@ -5,9 +5,11 @@ export const profileApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://127.0.0.1:3001/api/v1/",
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.details.body.token;
-      headers.set("authorization", `Bearer ${token}`);
-      return headers;
+      const { token } = getState().auth.logDetails.body;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+        return headers;
+      }
     },
   }),
   endpoints: (builder) => ({
