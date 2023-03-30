@@ -12,12 +12,14 @@ export const profileApi = createApi({
       }
     },
   }),
+
   endpoints: (builder) => ({
     getUserDetails: builder.query({
       query: () => ({
         url: "user/profile",
         method: "POST",
       }),
+      providesTags: ["user"],
     }),
     updateUserDetails: builder.mutation({
       query: ({ ...rest }) => ({
@@ -25,6 +27,7 @@ export const profileApi = createApi({
         method: "PUT",
         body: rest,
       }),
+      invalidatesTags: ["user"],
     }),
   }),
 });

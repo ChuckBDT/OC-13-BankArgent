@@ -107,6 +107,30 @@ body {
   font-size: 0.9rem;
 }
 
+.update-form {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 51;
+}
+
+.update-form--active {
+  display: flex;
+}
+
+.update-form-content {
+  background-color: #12002b;
+  width: 200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;
