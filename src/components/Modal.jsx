@@ -19,7 +19,6 @@ function Modal() {
   };
 
   const updateUserHandler = (data) => {
-    reset();
     updateUserDetails(data);
     toggleModal();
   };

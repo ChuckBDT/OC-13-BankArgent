@@ -7,8 +7,7 @@ import Logo from "./assets/argentBankLogo.png";
 import "./App.css";
 
 function App() {
-  const { logDetails } = useSelector((state) => state.auth);
-  const { userInfos } = useSelector((state) => state.auth);
+  const { logDetails, userInfos } = useSelector((state) => state.auth);
 
   return (
     <>
