@@ -4,11 +4,22 @@ import { useUpdateUserDetailsMutation } from "../features/apiSlice";
 
 function Modal() {
   const [show, setShow] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const [updateUserDetails] = useUpdateUserDetailsMutation();
 
-  const toggleModal = () => setShow(!show);
+  const toggleModal = () => {
+    setShow(!show);
+    reset();
+  };
+
   const updateUserHandler = (data) => {
+    reset();
     updateUserDetails(data);
     toggleModal();
   };
@@ -26,7 +37,7 @@ function Modal() {
           >
             <i
               onClick={() => toggleModal()}
-              class='fa fa-times update-form-close'
+              className='fa fa-times update-form-close'
               aria-hidden='true'
             ></i>
             <h1>Update your profile</h1>
@@ -35,9 +46,18 @@ function Modal() {
               <input
                 type='text'
                 placeholder='First Name'
-                {...register("firstName")}
+                {...register("firstName", { required: true })}
                 id='firstName'
               />
+              {errors.firstName && (
+                <p className='update-form-error'>
+                  <i
+                    className='fa fa-exclamation-triangle'
+                    aria-hidden='true'
+                  ></i>{" "}
+                  This is required
+                </p>
+              )}
             </div>
             <div className='input-wrapper'>
               <label htmlFor='lastName'>Last Name</label>

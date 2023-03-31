@@ -132,6 +132,18 @@ body {
   position: absolute;
   right: 20px;
   top: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.update-form-close:hover {
+  color: #00bc77;
+}
+
+.update-form-error {
+  margin-block: 0;
+  margin-top: 10px;
+  color: rgb(255, 52, 52);
 }
 
 @media (min-width: 920px) {
