@@ -9,6 +9,7 @@ import App from "./App";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import User from "./views/User";
+import ErrorPage from "./components/ErrorPage";
 
 import "./index.css";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
