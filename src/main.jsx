@@ -11,6 +11,7 @@ import Login from "./views/Login";
 import User from "./views/User";
 
 import "./index.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/user/:id",
-        element: <User />,
+        path: "/user/profile",
+        element: (
+          <ProtectedRoute>
+            <User />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
