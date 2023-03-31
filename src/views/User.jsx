@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useGetUserDetailsQuery,
-  useUpdateUserDetailsMutation,
-} from "../features/apiSlice";
+import { useGetUserDetailsQuery } from "../features/apiSlice";
 import { setUserInfos } from "../features/auth/authSlice";
-import { useForm } from "react-hook-form";
+import Modal from "../components/Modal";
 
 const User = () => {
   const { userInfos } = useSelector((state) => state.auth);
   const { data } = useGetUserDetailsQuery();
-  const [updateUserDetails] = useUpdateUserDetailsMutation();
-  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-
-  const updateUserHandler = (data) => {
-    updateUserDetails(data);
-  };
 
   useEffect(() => {
     if (data) dispatch(setUserInfos(data));
@@ -31,43 +22,7 @@ const User = () => {
           {userInfos ? userInfos.body.firstName : "Chargement"}{" "}
           {userInfos ? userInfos.body.lastName : ""} !
         </h1>
-        <button onClick={() => handleDisplay()} className='edit-button'>
-          Edit Name
-        </button>
-
-        <div
-          className={`update-form ${displayed ? "update-form--active" : ""}`}
-        >
-          <form
-            className='update-form-content'
-            onSubmit={() => {
-              handleSubmit(updateUserHandler);
-            }}
-          >
-            <h1>Update your profile</h1>
-            <div className='input-wrapper'>
-              <label htmlFor='firstName'>First Name</label>
-              <input
-                type='text'
-                placeholder='First Name'
-                {...register("firstName")}
-                id='firstName'
-              />
-            </div>
-            <div className='input-wrapper'>
-              <label htmlFor='lastName'>Last Name</label>
-              <input
-                type='text'
-                placeholder='Last Name'
-                {...register("lastName")}
-                id='lastName'
-              />
-            </div>
-            <button type='submit' className='sign-in-button'>
-              Update
-            </button>
-          </form>
-        </div>
+        <Modal />
       </div>
       <h2 className='sr-only'>Accounts</h2>
       <section className='account'>

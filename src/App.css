@@ -109,7 +109,7 @@ body {
 
 .update-form {
   position: absolute;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
@@ -120,15 +120,18 @@ body {
   z-index: 51;
 }
 
-.update-form--active {
-  display: flex;
-}
-
 .update-form-content {
+  position: relative;
   background-color: #12002b;
   width: 200px;
   margin: 0 auto;
   padding: 40px;
+}
+
+.update-form-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 
 @media (min-width: 920px) {
