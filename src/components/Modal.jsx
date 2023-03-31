@@ -9,8 +9,8 @@ function Modal() {
 
   const toggleModal = () => setShow(!show);
   const updateUserHandler = (data) => {
-    console.log(data);
     updateUserDetails(data);
+    toggleModal();
   };
 
   return (
@@ -20,7 +20,10 @@ function Modal() {
       </button>
       {show && (
         <div className='update-form'>
-          <form className='update-form-content'>
+          <form
+            className='update-form-content'
+            onSubmit={handleSubmit(updateUserHandler)}
+          >
             <i
               onClick={() => toggleModal()}
               class='fa fa-times update-form-close'
@@ -45,13 +48,7 @@ function Modal() {
                 id='lastName'
               />
             </div>
-            <button
-              onClick={() => {
-                console.log("click");
-                handleSubmit(updateUserHandler);
-              }}
-              className='sign-in-button'
-            >
+            <button type='submit' className='sign-in-button'>
               Update
             </button>
           </form>
