@@ -164,38 +164,9 @@ input:focus {
   outline: none;
 }
 
-@media (min-width: 920px) {
-  .hero {
-    height: 400px;
-    background-position: 0% 33%;
-  }
-
-  .hero-content {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    width: 300px;
-    margin: 2rem;
-  }
-
-  .hero-content .subtitle {
-    font-size: 1.5rem;
-  }
-
-  .hero-content .text {
-    font-size: 1.2rem;
-  }
-}
-
 .features {
   display: flex;
   flex-direction: column;
-}
-
-@media (min-width: 920px) {
-  .features {
-    flex-direction: row;
-  }
 }
 
 .feature-icon {
@@ -338,6 +309,33 @@ input:focus {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+}
+
+@media (min-width: 920px) {
+  .hero {
+    height: 400px;
+    background-position: 0% 33%;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 300px;
+    margin: 2rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-content .text {
+    font-size: 1.2rem;
+  }
+
+  .features {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 720px) {
