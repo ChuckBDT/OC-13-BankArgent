@@ -3,16 +3,16 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import store from "./app/store";
-
 import App from "./App";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import User from "./views/User";
 import ErrorPage from "./components/ErrorPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import store from "./app/store";
 
 import "./index.css";
-import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {

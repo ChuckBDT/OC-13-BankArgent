@@ -7,7 +7,7 @@ const ErrorPage = () => {
     <main className='error-page'>
       <img src={Logo} alt='' />
       <h1>404 Route not found !</h1>
-      <p>You just hit a route that doesn't exist... the sadness.</p>
+      <p>You just hit a route that doesn't exist...</p>
       <Link to='/'>Go to Home Page</Link>
     </main>
   );

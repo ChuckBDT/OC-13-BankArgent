@@ -9,6 +9,11 @@ const User = () => {
   const { userInfos } = useSelector((state) => state.auth);
   const { data } = useGetUserDetailsQuery();
   const dispatch = useDispatch();
+  const accountData = [
+    { title: "Argent Bank Checking (x8349)", amount: "2,082.79" },
+    { title: "Argent Bank Checking (x8349)", amount: "2,082.79" },
+    { title: "Argent Bank Checking (x8349)", amount: "2,082.79" },
+  ];
 
   useEffect(() => {
     if (data) dispatch(setUserInfos(data));
@@ -26,9 +31,13 @@ const User = () => {
         <Modal />
       </div>
       <h2 className='sr-only'>Accounts</h2>
-      <UserAccount title='Argent Bank Checking (x8349)' amount='2,082.79' />
-      <UserAccount title='Argent Bank Savings (x6712)' amount='10,928.42' />
-      <UserAccount title='Argent Bank Credit Card (x8349)' amount='184.30' />
+      {accountData.map((accountData, index) => (
+        <UserAccount
+          key={index}
+          title={accountData.title}
+          amount={accountData.amount}
+        />
+      ))}
     </main>
   );
 };
