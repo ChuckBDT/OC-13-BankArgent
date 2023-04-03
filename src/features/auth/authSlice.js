@@ -18,20 +18,21 @@ const authSlice = createSlice({
       state.userInfos = payload;
     },
   },
-  extraReducers: {
-    [userLogin.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [userLogin.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.logDetails = payload;
-      state.success = true;
-    },
-    [userLogin.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(userLogin.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(userLogin.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.logDetails = payload;
+        state.success = true;
+      })
+      .addCase(userLogin.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      });
   },
 });
 
