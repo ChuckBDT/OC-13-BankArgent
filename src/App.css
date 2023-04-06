@@ -129,10 +129,16 @@ body {
   font-size: 0.9rem;
 }
 
-.update-form-error {
+.update-form-error,
+.login-form-error {
   margin-block: 0;
   margin-top: 10px;
   color: rgb(255, 52, 52);
+}
+
+.login-form-error {
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 .error-page {

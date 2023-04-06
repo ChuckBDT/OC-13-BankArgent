@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function Login() {
-  const { logDetails } = useSelector((state) => state.auth);
+  const { logDetails, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='input-wrapper'>
             <label htmlFor='username'>Username</label>
-            <input {...register("email")} type='text' id='username' />
+            <input {...register("email")} type='email' id='username' />
           </div>
           <div className='input-wrapper'>
             <label htmlFor='password'>Password</label>
@@ -38,6 +38,13 @@ function Login() {
             <input type='checkbox' id='remember-me' />
             <label htmlFor='remember-me'>Remember me</label>
           </div>
+          {error && (
+            <p className='login-form-error'>
+              Wrong Username / Password
+              <br />
+              Please try again
+            </p>
+          )}
           <button type='submit' className='sign-in-button'>
             Sign In
           </button>
