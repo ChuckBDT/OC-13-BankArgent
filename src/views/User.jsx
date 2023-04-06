@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetUserDetailsQuery } from "../features/apiSlice";
 import { setUserInfos } from "../features/auth/authSlice";
-import Modal from "../components/Modal";
+import NameUpdater from "../components/NameUpdater";
 import UserAccount from "../components/UserAccount";
 
 const User = () => {
@@ -28,7 +28,10 @@ const User = () => {
           {userInfos ? userInfos.body.firstName : "Chargement"}{" "}
           {userInfos ? userInfos.body.lastName : ""} !
         </h1>
-        <Modal />
+        <NameUpdater
+          fName={userInfos ? userInfos.body.firstName : "Chargement"}
+          lName={userInfos ? userInfos.body.lastName : "Chargement"}
+        />
       </div>
       <h2 className='sr-only'>Accounts</h2>
       {accountData.map((accountData, index) => (

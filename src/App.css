@@ -108,36 +108,25 @@ body {
 }
 
 .update-form {
-  position: absolute;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.update-form-fields,
+.update-form-btn {
   display: flex;
   justify-content: center;
-  align-items: center;
-  top: 0;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 51;
+  column-gap: 1rem;
 }
 
-.update-form-content {
-  position: relative;
-  background-color: #12002b;
-  width: 200px;
-  margin: 0 auto;
-  padding: 40px;
+.update-form-fields .input-wrapper {
+  margin-bottom: 0;
+  width: 12rem;
 }
 
-.update-form-close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.update-form-close:hover {
-  color: #00bc77;
+.update-form-btn .sign-in-button {
+  width: 7rem;
+  font-size: 0.9rem;
 }
 
 .update-form-error {
