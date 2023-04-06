@@ -4,7 +4,6 @@ import { useUpdateUserDetailsMutation } from "../features/apiSlice";
 
 function NameUpdater({ fName, lName }) {
   const [formShow, setFormShow] = useState(false);
-  const [btnformShow, setBtnformShow] = useState(true);
 
   const {
     register,
@@ -16,7 +15,6 @@ function NameUpdater({ fName, lName }) {
   const [updateUserDetails] = useUpdateUserDetailsMutation();
 
   const toggleShow = () => {
-    setBtnformShow(!btnformShow);
     setFormShow(!formShow);
     reset();
   };
@@ -28,7 +26,7 @@ function NameUpdater({ fName, lName }) {
 
   return (
     <>
-      {btnformShow && (
+      {!formShow && (
         <button onClick={() => toggleShow()} className='edit-button'>
           Edit Name
         </button>
